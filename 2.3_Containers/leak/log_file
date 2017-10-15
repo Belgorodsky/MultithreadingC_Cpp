@@ -1,0 +1,13 @@
+1481484750: 5: Dmalloc version '5.5.2' from 'http://dmalloc.com/'
+1481484750: 5: flags = 0x4402, logfile 'log_file'
+1481484750: 5: interval = 0, addr = 0, seen # = 0, limit = 0
+1481484750: 5: starting time = 1481484750
+1481484750: 5: process pid = 20118
+1481484750: 5: Dumping Not-Freed Pointers Changed Since Start:
+1481484750: 5:  not freed: '0x10080cfd8|s1' (3 bytes) from 'leak.c:5'
+1481484750: 5:  not freed: '0x10080cfe8|s1' (2 bytes) from 'leak.c:5'
+1481484750: 5:  not freed: '0x10080cff8|s1' (1 bytes) from 'leak.c:5'
+1481484750: 5:  total-size  count  source
+1481484750: 5:           6      3  leak.c:5
+1481484750: 5:           6      3  Total of 1
+1481484750: 5: ending time = 1481484750, elapsed since start = 0:00:00

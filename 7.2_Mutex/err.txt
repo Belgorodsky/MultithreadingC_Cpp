@@ -1,0 +1,49 @@
+main.cpp:34:16: warning: 'syscall' is deprecated: first deprecated in macOS 10.12 - syscall(2) is unsupported; please switch to a supported interface. For SYS_kdebug_trace use kdebug_signpost(). [-Wdeprecated-declarations]
+    pid_t id = gettid();
+               ^
+main.cpp:8:18: note: expanded from macro 'gettid'
+#define gettid() syscall(SYS_gettid)
+                 ^
+/usr/include/unistd.h:733:6: note: 'syscall' has been explicitly marked deprecated here
+int      syscall(int, ...);
+         ^
+main.cpp:67:5: error: unknown type name 'pthread_spinlock_t'; did you mean 'pthread_rwlock_t'?
+    pthread_spinlock_t* spin = (pthread_spinlock_t*)arg;
+    ^~~~~~~~~~~~~~~~~~
+    pthread_rwlock_t
+/usr/include/sys/_pthread/_pthread_rwlock_t.h:30:35: note: 'pthread_rwlock_t' declared here
+typedef __darwin_pthread_rwlock_t pthread_rwlock_t;
+                                  ^
+main.cpp:67:33: error: use of undeclared identifier 'pthread_spinlock_t'
+    pthread_spinlock_t* spin = (pthread_spinlock_t*)arg;
+                                ^
+main.cpp:67:52: error: expected expression
+    pthread_spinlock_t* spin = (pthread_spinlock_t*)arg;
+                                                   ^
+main.cpp:71:9: error: use of undeclared identifier 'pthread_spin_lock'; did you mean 'pthread_mutex_lock'?
+        pthread_spin_lock(spin);
+        ^~~~~~~~~~~~~~~~~
+        pthread_mutex_lock
+/usr/include/pthread.h:377:5: note: 'pthread_mutex_lock' declared here
+int pthread_mutex_lock(pthread_mutex_t *);
+    ^
+main.cpp:71:27: error: cannot initialize a parameter of type 'pthread_mutex_t * _Nonnull' (aka '_opaque_pthread_mutex_t *') with an lvalue of type 'pthread_rwlock_t *' (aka '_opaque_pthread_rwlock_t *')
+        pthread_spin_lock(spin);
+                          ^~~~
+/usr/include/pthread.h:377:41: note: passing argument to parameter here
+int pthread_mutex_lock(pthread_mutex_t *);
+                                        ^
+main.cpp:75:9: error: use of undeclared identifier 'pthread_spin_unlock'; did you mean 'pthread_mutex_unlock'?
+        pthread_spin_unlock(spin);
+        ^~~~~~~~~~~~~~~~~~~
+        pthread_mutex_unlock
+/usr/include/pthread.h:387:5: note: 'pthread_mutex_unlock' declared here
+int pthread_mutex_unlock(pthread_mutex_t *);
+    ^
+main.cpp:75:29: error: cannot initialize a parameter of type 'pthread_mutex_t * _Nonnull' (aka '_opaque_pthread_mutex_t *') with an lvalue of type 'pthread_rwlock_t *' (aka '_opaque_pthread_rwlock_t *')
+        pthread_spin_unlock(spin);
+                            ^~~~
+/usr/include/pthread.h:387:43: note: passing argument to parameter here
+int pthread_mutex_unlock(pthread_mutex_t *);
+                                          ^
+1 warning and 7 errors generated.
